@@ -22,3 +22,11 @@ Creating recipe-app-api_app_run ... done
 ❯ sudo chown user:user -R app
 ❯ chmod 755 app 
 ```
+
+### docker-compose up
+
+Also for `docker-compose up`the permissions on the app directory need to be write for all otherwise we will see the following error message
+
+```
+app_1  | django.db.utils.OperationalError: unable to open database file
+```
