@@ -30,3 +30,18 @@ Also for `docker-compose up`the permissions on the app directory need to be writ
 ```
 app_1  | django.db.utils.OperationalError: unable to open database file
 ```
+
+Other solution is to create an external database that doesn't store the content in the project or use docker-compose volumes.
+
+### makemigrations
+
+Again the issue with running in a different user context prohibits generating migrations.
+
+We need to open the `app/core/migrations/` directory for generating files by the docker-compose user.
+
+Useful commands
+```
+sudo chown user:user -R .
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+```
