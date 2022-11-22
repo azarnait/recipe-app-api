@@ -39,9 +39,16 @@ Again the issue with running in a different user context prohibits generating mi
 
 We need to open the `app/core/migrations/` directory for generating files by the docker-compose user.
 
-Useful commands
+Make migrations work
 ```
+chmod 777 app/core/migrations
+docker-compose run --rm app sh -c "python manage.py makemigrations"
 sudo chown user:user -R .
+chmod 755 app/core/migrations
+```
+
+useful commands
+```
 find . -type d -exec chmod 755 {} \;
 find . -type f -exec chmod 644 {} \;
 ```
